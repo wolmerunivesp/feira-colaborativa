@@ -12,6 +12,9 @@ def index():
 def login():
     return render_template("login.html")
 
+@app.route("/grupos")
+def grupos():
+    return render_template("grupos.html")
 
 if __name__ == "__main__":
     app.run(debug=True)
