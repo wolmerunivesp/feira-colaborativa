@@ -43,7 +43,7 @@ def signup_post():
     user = User.query.filter_by(email=email).first()
 
     if user:
-        flash('Email já existetnte')
+        flash('E-mail já cadastrado')
         return redirect(url_for('auth.signup'))
     
     #Criando novo usuário
