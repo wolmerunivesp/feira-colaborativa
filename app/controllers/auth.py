@@ -38,6 +38,7 @@ def signup_post():
     email = request.form.get('email')
     name = request.form.get('name')
     password = request.form.get('password')
+    telefone = request.form.get('telefone')
 
     # Retorna ao usuario se o email já existe
     user = User.query.filter_by(email=email).first()
@@ -47,7 +48,7 @@ def signup_post():
         return redirect(url_for('auth.signup'))
     
     #Criando novo usuário
-    new_user = User(email=email, name=name, password=generate_password_hash(password, method='sha256'))
+    new_user = User(email=email, name=name, password=generate_password_hash(password, method='sha256'), telefone=telefone)
 
     # Adicionando o usuário ao banco de dados
     db.session.add(new_user)
