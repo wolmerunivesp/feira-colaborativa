@@ -8,8 +8,12 @@ db = SQLAlchemy()
 def create_app():
     app = Flask(__name__)
 
+    
     app.config['SECRET_KEY'] = 'feira#br7-natu@za'
-    app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///db.sqlite'
+
+    # dialect + driver: //username:password@host:port/database
+    app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://b61ca611e9cd86:b9274dfc@us-cdbr-east-04.cleardb.com/heroku_46cc2957a8f111a'
+    # app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///db.sqlite'
 
     db.init_app(app)
 
