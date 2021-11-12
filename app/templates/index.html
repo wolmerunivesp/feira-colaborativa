@@ -72,13 +72,13 @@
                                 <a class="nav-link" href="{{ url_for('main.profile') }}">Peril</a>
                             </li>
                             <li>
-                                <a class="nav-link" href="{{ url_for('auth.logout') }}">Logout</a>
+                                <a class="nav-link" href="{{ url_for('auth.logout') }}">Sair</a>
                             </li>
                             {% endif %}
 
                             {% if not current_user.is_authenticated %}
                             <li class="nav-item">
-                                <a class="nav-link" href="{{ url_for('auth.login') }}">Login</a>
+                                <a class="nav-link" href="{{ url_for('auth.login') }}">Entrar</a>
                             </li>
                             <li>
                                 <a class="nav-link" href="{{ url_for('auth.signup') }}">Registre-se</a>
