@@ -8,9 +8,9 @@ auth = Blueprint('auth', __name__)
 
 @auth.route('/login')
 def login():
-    return render_template('login.html')
+    return render_template('teste.html')
 
-@auth.route('/login', methods=['POST', 'GET'])
+@auth.route('/login', methods=['POST'])
 def login_post():
     email = request.form.get('email')
     password = request.form.get('password')
