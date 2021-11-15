@@ -13,9 +13,28 @@ def create_app():
 
     # dialect + driver: //username:password@host:port/database
     #heruko
-    app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://b61ca611e9cd86:b9274dfc@us-cdbr-east-04.cleardb.com/heroku_46cc2957a8f111a'
+    # app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://b61ca611e9cd86:b9274dfc@us-cdbr-east-04.cleardb.com/heroku_46cc2957a8f111a'
     #phpmyadmin
-    # app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://root:@localhost/bd_flask'
+
+    # Configuração para PRODUÇÃO no Heroku
+    db_driver = 'pymysql'
+    db_dialect = 'mysql'
+    db_user = 'b61ca611e9cd86'
+    db_pass ='b9274dfc'
+    db_host = 'us-cdbr-east-04.cleardb.com'
+    db_name = 'heroku_46cc2957a8f111a'
+
+    # Configuração para teste Local usando o XAMPP e PhpMyAdmin
+    # db_driver = 'pymysql'
+    # db_dialect = 'mysql'
+    # db_user = 'root'
+    # db_pass =''
+    # db_host = 'localhost'
+    # db_name = 'bd_flask'
+
+    # Conexão com o BD
+    app.config['SQLALCHEMY_DATABASE_URI'] = "{db_dialect}+{db_driver}://{db_user}:{db_pass}@{db_host}/{db_name}".format(db_dialect=db_dialect, db_driver=db_driver, db_user = db_user, db_pass = db_pass, db_host = db_host, db_name = db_name)
+    
     
 
     db.init_app(app)
