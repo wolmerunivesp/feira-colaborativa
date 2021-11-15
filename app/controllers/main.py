@@ -42,44 +42,7 @@ def listar_grupos():
             popup="<i>{fname}</i>".format(fname = coordenada[0])
         ).add_to(localizacoes)
     
-    return localizacoes._repr_html_()
-    
-    
-
-
-    # return render_template("grupos.html", lista_de_grupos=lista_de_grupos)
-
-
-    # ----- funciona ------
-    # lista_de_grupos = Grupo.query.all()
-    # return render_template("grupos.html", lista_de_grupos=lista_de_grupos)
-
-
-#  folium.Marker(
-#             [coordenada[], -121.6625],
-#             popup="<i>Mt. Hood Meadows</i>",
-#             tooltip=tooltip
-#         ).add_to(localizacoes)
-
-    # localizacoes = folium.Map(location=[-23.2038503, -45.8697245], zoom_start=13, tiles="OpenStreetMap")
-    # for grupo in lista_de_grupos:
-
-    #     localizacoes.Marker(
-    #         location=[grupo.latitude, grupo.longitude],
-    #         popup=grupo.name,
-    #         icon=folium.Icon(icon="cloud"),
-    #     ).add_to(folium_map)
-
-
-
-    # return localizacoes._repr_html_()
-
-
-
-
-
-
-    
+    return localizacoes._repr_html_()  
 
 @main.route('/criar_grupo')
 @login_required
@@ -121,7 +84,7 @@ def criar_grupo():
     
 
 
-      # Retorna ao usuario se o email já existe
+    # Retorna ao usuario se o email já existe
     grupo = Grupo.query.filter_by(name=name).first()
 
     if grupo:
@@ -136,10 +99,3 @@ def criar_grupo():
     db.session.commit()
     flash('Grupo criado com sucesso')
     return redirect(url_for('main.criar_grupo'))
-
-# @main.route('/mapa')
-# @login_required
-# def mapa():
-#     start_coords = (46.9540700, 142.7360300)
-#     mapa = folium.Map(location=start_coords, zoom_start=14)
-#     return mapa._repr_html_()
