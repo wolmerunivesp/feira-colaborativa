@@ -6,7 +6,9 @@ Author: kantbtrue
 Author URI: https://twitter.com/kantbtrue
 
 */
-
+html, body {
+    overflow-x: hidden;
+}
 html,
 body {
 	height: 100%;
@@ -30,7 +32,7 @@ body {
 	padding: 15px;
 }
 .lg-space {
-	padding: 25px;
+	padding: 5px;
 }
 .xl-space {
 	padding: 50px;
@@ -64,9 +66,9 @@ body {
 }
 
 /* Section */
-.section {
+/* .section {
 	padding: 80px 0;
-}
+} */
 .section-bg {
 	background-size: cover;
 	background-position: center;

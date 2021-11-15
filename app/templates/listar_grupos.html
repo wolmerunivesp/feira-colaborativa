@@ -1,0 +1,54 @@
+{% extends "base.html" %}
+
+{% block head %}
+<!-- <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/perfil.css') }}"> -->
+{% endblock %}
+
+
+{% block content %}
+
+<div class="content">
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>Nome</th>
+                <th>Admin</th>
+                <th>verdura</th>
+                <th>legume</th>
+                <th>fruta</th>
+                <th>tempero</th>
+                <th>semanalmente</th>
+                <th>quinzenalmente</th>
+                <th>cep</th>
+                <th>latitude</th>
+                <th>longitude</th>
+                <th>whatsapp</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for grupo in lista_de_grupos %}
+            <tr>
+                <td>{{grupo.name}}</td>
+                <td>{{grupo.admin}}</td>
+                <td>{{grupo.verdura}}</td>
+                <td>{{grupo.legume}}</td>
+                <td>{{grupo.fruta}}</td>
+                <td>{{grupo.tempero}}</td>
+                <td>{{grupo.semanalmente}}</td>
+                <td>{{grupo.quinzenalmente}}</td>
+                <td>{{grupo.cep}}</td>
+                <td>{{grupo.latitude}}</td>
+                <td>{{grupo.longitude}}</td>
+                <td>{{grupo.whatsapp}}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+
+
+{% endblock %}
+
+
+{% block footer %}
+{% endblock %}

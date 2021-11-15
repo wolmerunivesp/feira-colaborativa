@@ -1,293 +1,174 @@
-<!DOCTYPE html>
-<html lang="zxx" dir="ltr">
+{% extends "base.html" %}
 
-<head>
-    <meta charset="UTF-8">
-    <title>Feira Colaborativa</title>
+{% block head %}
+<!-- Default CSS -->
+<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/default.css') }}">
 
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="icon" type="image/png" href="../static/images/ico2.png">
+<!-- Color CSS -->
+<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/color.css') }}">
 
+<!-- Font CSS -->
+<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/font.css') }}">
 
-    <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css?family=Roboto:400,500,700,900" rel="stylesheet">
+<!-- Button CSS -->
+<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/button.css') }}">
 
-    <!-- Font Awesome -->
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.9/css/all.css"
-        integrity="sha384-5SOiIsAziJl6AWe0HWRKTXlfcSHKmYV4RBF18PPJ173Kzn7jzMyFuTtk8JA7QQG1" crossorigin="anonymous">
-
-    <!-- Bootstrap CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-
-    <!-- Default CSS -->
+<!-- Main CSS -->
+<!-- <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/style.css') }}"> -->
+{% endblock %}
 
 
-    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/default.css') }}">
 
-    <!-- Color CSS -->
-
-    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/color.css') }}">
-
-    <!-- Font CSS -->
-
-    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/font.css') }}">
-
-    <!-- Button CSS -->
-
-    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/button.css') }}">
-
-    <!-- Main CSS -->
-
-    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/style.css') }}">
-
-</head>
-
-<body class="text-black base-font-size">
-
-    <div class="wrapper h-100">
-
-        <!-- Header -->
-        <header class="header bg-primary">
-
-            <nav class="navbar navbar-expand-lg navbar-light bg-light">
-                <div class="container-fluid">
-                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-                        data-bs-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03" aria-expanded="false"
-                        aria-label="Toggle navigation">
-                        <span class="navbar-toggler-icon"></span>
-                    </button>
-
-                    <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
-                        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-
-                            <li class="nav-item">
-                                <a class="nav-link active" aria-current="page"
-                                    href="{{ url_for('main.index') }}">Home</a>
-                            </li>
-
-                            {% if current_user.is_authenticated %}
-                            <li class="nav-item">
-                                <a class="nav-link" href="{{ url_for('main.profile') }}">Peril</a>
-                            </li>
-                            <li>
-                                <a class="nav-link" href="{{ url_for('auth.logout') }}">Sair</a>
-                            </li>
-                            {% endif %}
-
-                            {% if not current_user.is_authenticated %}
-                            <li class="nav-item">
-                                <a class="nav-link" href="{{ url_for('auth.login') }}">Entrar</a>
-                            </li>
-                            <li>
-                                <a class="nav-link" href="{{ url_for('auth.signup') }}">Registre-se</a>
-                            </li>
-                            {% endif %}
-                        </ul>
-                    </div>
+{% block content %}
+<!-- Hero -->
+<div class="jumbotron jumbotron-fluid bg-primary text-secondary font-weight__500 hero mb-0">
+    <!-- Empty Space -->
+    <div class="sm-space"></div>
+    <!--/ End Empty Space -->
+    <div class="container hero-inner">
+        <div class="row align-items-center">
+            <div class="col-12 col-lg-6 mr-lg-auto">
+                <div class="text-left text-lg-left">
+                    <h1 class="xxxl-font-size font-weight__900 text-white">
+                        Feira Colaborativa
+                    </h1>
+                    <div class="d-flex"></div>
+                    <p class="lead base-plus-font-size text-white fs-4" style="text-align: justify;">
+                        Uma forma de comprar em grupo diretamente no atacado sem intermediários. Assim, você
+                        pode economizar e sempre ter hortifrutigranjeiros frescos.
+                    </p>
                 </div>
-            </nav>
-            <!-- Empty Space -->
-            <div class="sm-space bg-primary"></div>
-            <!--/ End Empty Space -->
-        </header>
-        <!--/ End Header -->
-
-        <!-- Hero -->
-        <div class="jumbotron jumbotron-fluid bg-primary text-secondary font-weight__500 hero mb-0">
-            <!-- Empty Space -->
-            <div class="sm-space"></div>
-            <!--/ End Empty Space -->
-            <div class="container hero-inner">
-                <div class="row align-items-center">
-                    <div class="col-12 col-lg-6 mr-lg-auto">
-                        <div class="text-left text-lg-left">
-                            <h1 class="xxxl-font-size font-weight__900 text-white">
-                                Feira Colaborativa
-                            </h1>
-                            <div class="d-flex"></div>
-                            <p class="lead base-plus-font-size text-white" style="text-align: justify;">
-                                Uma forma de comprar em grupo diretamente no atacado sem intermediários. Assim, você
-                                pode economizar e sempre ter hortifrutigranjeiros frescos.
-                            </p>
-                        </div>
-                    </div>
-                    <div class="col-12 col-lg-5" style="text-align:center">
-                        <img src="../static/images/frutas-legumes.svg" class="img-fluid" alt="Responsive image"
-                            style="max-height: 20rem;">
-                    </div>
-                </div>
+            </div>
+            <div class="col-12 col-lg-5 d-none d-lg-block" style="text-align:center">
+                <img src="../static/images/frutas-legumes.svg" class="img-fluid" alt="Responsive image"
+                    style="max-height: 20rem;">
             </div>
         </div>
-        <!--/ End Hero -->
-
-        <!-- Features Grid -->
-        <div class="section feature-grid bg-light">
-            <div class="container">
-                <div class="row">
-                    <div class="col-10 mx-auto text-center">
-                        <h2 class="font-weight__700">Processo simples</h2>
-                        <p class="lead text-dark-gray">Localize ou crie grupos. Coordene com os integrantes do grupo.
-                            Compre os hortifrutigranjeiros</p>
-                    </div>
-                </div>
-                <!-- Enpty Space -->
-                <div class="md-space"></div>
-                <!--/ End Empty Space -->
-                <div class="row">
-                    <div class="col-12 mx-auto" style="align-content: start">
-                        <div class="row equal-height justify-content-center">
-
-                            <div class="col-10 col-lg-4" style="align-content: start">
-                                <div class="feature-grid box box-shadow box-shadow__hover bg-light-primary row">
-                                    <div class="mt-auto col">
-                                        <div class="row align-items-center">
-                                            <div class="col-12 col-md-4 col-lg-12" style="text-align: center; ">
-                                                <img src="../static/images/localizacao.svg" alt="product image"
-                                                    class="img-fluid" style="max-height: 20rem;">
-                                                <!-- Enpty Space -->
-                                                <div class="md-space"></div>
-                                                <!--/ End Empty Space -->
-                                            </div>
-                                            <div
-                                                class="col-12 col-md-8 col-lg-12 text-center text-md-left text-lg-center">
-                                                <h3 class="font-weight__500">
-                                                    Localizar
-                                                </h3>
-                                                <p style="text-align: justify;">
-                                                    Procure perto de você grupos de pessoas que querem comprar
-                                                    hortifrutigranjeiros diretamente com fornecedores, como por exemplo
-                                                    no CEAGESP. Caso não haja grupos perto de sua localização você pode
-                                                    criar um grupo e ser o administrador desse grupo, aqui no App.
-                                                    Assim, você define a localização do grupo, pelo cep que você
-                                                    escolher como referência. Essa referência é importante para que as
-                                                    pessoas possam se reunir o mais próximo possível, para economizar
-                                                    custo com a distribuição das compras.
-                                                </p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="col-10 col-lg-4" style="align-content: start">
-                                <div class="feature-grid box box-shadow box-shadow__hover bg-light-primary row">
-                                    <div class="mt-auto col">
-                                        <div class="row align-items-center">
-                                            <div class="col-12 col-md-4 col-lg-12" style="text-align: center;">
-                                                <img src="../static/images/grupo-diversificado.svg" alt="product image"
-                                                    class="img-fluid" style="max-height: 20rem;">
-                                                <!-- Enpty Space -->
-                                                <div class="md-space"></div>
-                                                <!--/ End Empty Space -->
-                                            </div>
-                                            <div
-                                                class="col-12 col-md-8 col-lg-12 text-center text-md-left text-lg-center">
-                                                <h3 class="font-weight__500">
-                                                    Formar Grupos
-                                                </h3>
-                                                <p style="text-align: justify;">
-                                                    Os grupos são formados por moradores de uma rua, bairro, condomínio
-                                                    ou outro tipo de região que você preferir definir. Assim, na criação
-                                                    do grupo você informa a finalidade do grupo. Ex: Grupo dos moradores
-                                                    da Vila das Acácias formado para comprar semanalmente Frutas,
-                                                    Legumes e Verduras. Dessa maneira, a cada rodada de compras o grupo
-                                                    coordena uma pessoa para coletar as intenções de compras, arrecadar
-                                                    o dinheiro, realizar as compras e distribuí-las. Tudo isso
-                                                    coordenado por meio de um grupo de WhatsApp ou Telegram criado pelo
-                                                    administrador do grupo.
-
-                                                </p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="col-10 col-lg-4">
-                                <div class="feature-grid box box-shadow box-shadow__hover bg-light-primary row"
-                                    style="align-content: start">
-                                    <div class="mt-auto col">
-                                        <div class="row">
-                                            <div class="col-12 col-md-4 col-lg-12" style="text-align: center;">
-                                                <img src="../static/images/mulher-legumes.svg" alt="product image"
-                                                    class="img-fluid " style="max-height: 18rem;">
-                                                <!-- Enpty Space -->
-                                                <div class="md-space"></div>
-                                                <!--/ End Empty Space -->
-                                            </div>
-                                            <div
-                                                class="col-12 col-md-8 col-lg-12 text-center text-md-left text-lg-center">
-                                                <h3 class="font-weight__500">
-                                                    Comprar e Entregar
-                                                </h3>
-                                                <p style="text-align: justify;">
-                                                    Após uma análise do que será possível comprar com o valor arrecadado
-                                                    e com a quantidade e tipos de hortifrutigranjeiros solicitados, a
-                                                    pessoa da vez escolhida pelo grupo divulga uma relação dos itens que
-                                                    serão comprados. Todavia, essa lista pode sofrer alterações
-                                                    dependendo do preço e disponibilidades desses itens escolhidos.
-                                                    Então, após a compra os produtos são divididos entre os integrantes
-                                                    do grupo e é estabelecido um horário e local para que o grupo possa
-                                                    buscar os produtos comprados.
-                                                </p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!--/ End Features Grid -->
-
-        <!-- Footer -->
-        <footer class="footer section bg-light-primary text-gray pt-0">
-            <div class="container border-top border-color-light-gray">
-                <div class="lg-space"></div>
-                <div class="row align-items-center">
-                    <div class="col-12 col-lg-4 pl-lg-0">
-                        <ul class="nav md-font-size justify-content-center justify-content-lg-start">
-                            <li class="nav-item">
-                                <a href="#" class="nav-link text-dark-gray mr-1">Acesse nosso projeto
-                                    <i class="fab fa-github-square"></i></a>
-
-                            </li>
-                        </ul>
-                    </div>
-                    <div class="col-12 col-lg-8 pr-lg-0">
-                        <div class="credit sm-font-size text-center text-lg-right text-dark-gray">
-                            <span>Projeto Integrador I do curso do Eixo da Computação da Universidade Virtual do
-                                Estado de São Paulo - UNIVESP</span>.
-                        </div>
-                        <div class="copyright xs-font-size text-center text-lg-right">
-                            Polo Parque Tecnológico de São José dos Campos - SP 2021
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </footer>
-        <!--/ End Footer -->
-
     </div>
-    <!-- jQuery Script -->
-    <!-- <script src="../static/js/jquery.min.js"></script> -->
+</div>
+<!--/ End Hero -->
 
-    <!-- Popper Script -->
-    <!-- <script src="../static/js/popper.min.js"></script> -->
+<!-- Features Grid -->
+<div class="section feature-grid bg-light">
+    <div class="container">
+        <div class="row">
+            <div class="col-10 mx-auto text-center mt-5">
+                <h2 class="font-weight__700">Processo simples</h2>
+                <p class="lead text-dark-gray">Localize ou crie grupos. Coordene com os integrantes do grupo.
+                    Compre os hortifrutigranjeiros</p>
+            </div>
+        </div>
+        <!-- Enpty Space -->
+        <div class="md-space"></div>
+        <!--/ End Empty Space -->
+        <div class="row">
+            <div class="col-12 mx-auto" style="align-content: start">
+                <div class="row equal-height justify-content-center">
 
-    <!-- Bootstrap Bundle -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
-        crossorigin="anonymous"></script>
+                    <div class="col-10 col-lg-4" style="align-content: start">
+                        <div class="feature-grid box box-shadow box-shadow__hover bg-light-primary row">
+                            <div class="mt-auto col">
+                                <div class="row align-items-center">
+                                    <div class="col-12 col-md-4 col-lg-12" style="text-align: center; ">
+                                        <img src="../static/images/localizacao.svg" alt="product image"
+                                            class="img-fluid" style="max-height: 20rem;">
+                                        <!-- Enpty Space -->
+                                        <div class="md-space"></div>
+                                        <!--/ End Empty Space -->
+                                    </div>
+                                    <div class="col-12 col-md-8 col-lg-12 text-center text-md-left text-lg-center">
+                                        <h3 class="font-weight__500">
+                                            Localizar
+                                        </h3>
+                                        <p style="text-align: justify;">
+                                            Procure perto de você grupos de pessoas que querem comprar
+                                            hortifrutigranjeiros diretamente com fornecedores, como por exemplo
+                                            no CEAGESP. Caso não haja grupos perto de sua localização você pode
+                                            criar um grupo e ser o administrador desse grupo, aqui no App.
+                                            Assim, você define a localização do grupo, pelo cep que você
+                                            escolher como referência. Essa referência é importante para que as
+                                            pessoas possam se reunir o mais próximo possível, para economizar
+                                            custo com a distribuição das compras.
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
 
-    <!-- Main Script -->
-    <!-- <script src="../static/js/main.js"></script> -->
-    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+                    <div class="col-10 col-lg-4" style="align-content: start">
+                        <div class="feature-grid box box-shadow box-shadow__hover bg-light-primary row">
+                            <div class="mt-auto col">
+                                <div class="row align-items-center">
+                                    <div class="col-12 col-md-4 col-lg-12" style="text-align: center;">
+                                        <img src="../static/images/grupo-diversificado.svg" alt="product image"
+                                            class="img-fluid" style="max-height: 20rem;">
+                                        <!-- Enpty Space -->
+                                        <div class="md-space"></div>
+                                        <!--/ End Empty Space -->
+                                    </div>
+                                    <div class="col-12 col-md-8 col-lg-12 text-center text-md-left text-lg-center">
+                                        <h3 class="font-weight__500">
+                                            Formar Grupos
+                                        </h3>
+                                        <p style="text-align: justify;">
+                                            Os grupos são formados por moradores de uma rua, bairro, condomínio
+                                            ou outro tipo de região que você preferir definir. Assim, na criação
+                                            do grupo você informa a finalidade do grupo. Ex: Grupo dos moradores
+                                            da Vila das Acácias formado para comprar semanalmente Frutas,
+                                            Legumes e Verduras. Dessa maneira, a cada rodada de compras o grupo
+                                            coordena uma pessoa para coletar as intenções de compras, arrecadar
+                                            o dinheiro, realizar as compras e distribuí-las. Tudo isso
+                                            coordenado por meio de um grupo de WhatsApp ou Telegram criado pelo
+                                            administrador do grupo.
 
-</body>
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
 
-</html>
+                    <div class="col-10 col-lg-4">
+                        <div class="feature-grid box box-shadow box-shadow__hover bg-light-primary row"
+                            style="align-content: start">
+                            <div class="mt-auto col">
+                                <div class="row">
+                                    <div class="col-12 col-md-4 col-lg-12" style="text-align: center;">
+                                        <img src="../static/images/mulher-legumes.svg" alt="product image"
+                                            class="img-fluid " style="max-height: 18rem;">
+                                        <!-- Enpty Space -->
+                                        <div class="md-space"></div>
+                                        <!--/ End Empty Space -->
+                                    </div>
+                                    <div class="col-12 col-md-8 col-lg-12 text-center text-md-left text-lg-center">
+                                        <h3 class="font-weight__500">
+                                            Comprar e Entregar
+                                        </h3>
+                                        <p style="text-align: justify;">
+                                            Após uma análise do que será possível comprar com o valor arrecadado
+                                            e com a quantidade e tipos de hortifrutigranjeiros solicitados, a
+                                            pessoa da vez escolhida pelo grupo divulga uma relação dos itens que
+                                            serão comprados. Todavia, essa lista pode sofrer alterações
+                                            dependendo do preço e disponibilidades desses itens escolhidos.
+                                            Então, após a compra os produtos são divididos entre os integrantes
+                                            do grupo e é estabelecido um horário e local para que o grupo possa
+                                            buscar os produtos comprados.
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!--/ End Features Grid -->
+
+{% endblock %}
+
+
+{% block footer %}
+{% endblock %}
