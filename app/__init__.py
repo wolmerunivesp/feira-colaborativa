@@ -13,9 +13,9 @@ def create_app():
 
     # dialect + driver: //username:password@host:port/database
     #heruko
-    #app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://b61ca611e9cd86:b9274dfc@us-cdbr-east-04.cleardb.com/heroku_46cc2957a8f111a'
+    app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://b61ca611e9cd86:b9274dfc@us-cdbr-east-04.cleardb.com/heroku_46cc2957a8f111a'
     #phpmyadmin
-    app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://root:@localhost/bd_flask'
+    # app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://root:@localhost/bd_flask'
     
 
     db.init_app(app)
