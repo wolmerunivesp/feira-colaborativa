@@ -1,6 +1,9 @@
 from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
 from flask_login import LoginManager
+from dotenv import load_dotenv
+
+load_dotenv()
 
 #Iniciando o SQLAlchemy
 db = SQLAlchemy()
@@ -8,8 +11,8 @@ db = SQLAlchemy()
 def create_app():
     app = Flask(__name__)
 
-    
-    app.config['SECRET_KEY'] = 'feira#br7-natu@za'
+    app.config['SECRET_KEY'] = os.environ.get("SECRET_KEY", 'feira#br7-natu@za')
+    # app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get("DATABASE_URL", 'sqlite:///db.sqlite')
 
     # dialect + driver: //username:password@host:port/database
     #heruko
