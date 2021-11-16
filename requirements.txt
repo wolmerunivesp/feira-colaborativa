@@ -11,3 +11,7 @@ MarkupSafe==2.0.1
 PyMySQL==1.0.2
 SQLAlchemy==1.4.26
 Werkzeug==2.0.2
+geopy==2.2.0
+pycep_correios==5.0.0
+folium==0.12.1
+python-dotenv==0.19.2
