@@ -53,21 +53,21 @@
                         </li>
 
                         <li class="nav-item">
-                            <a class="nav-link " href="{{ url_for('main.criar_grupo') }}">Criar Grupo</a>
+                            <a class="nav-link active" href="{{ url_for('main.criar_grupo') }}">Criar Grupo</a>
                         </li>
 
                         <li>
-                            <a class="nav-link" href="{{ url_for('auth.logout') }}">Sair</a>
+                            <a class="nav-link active" href="{{ url_for('auth.logout') }}">Sair</a>
                         </li>
 
                         {% endif %}
 
                         {% if not current_user.is_authenticated %}
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ url_for('auth.login') }}">Entrar</a>
+                            <a class="nav-link active" href="{{ url_for('auth.login') }}">Entrar</a>
                         </li>
                         <li>
-                            <a class="nav-link" href="{{ url_for('auth.signup') }}">Registre-se</a>
+                            <a class="nav-link active" href="{{ url_for('auth.signup') }}">Registre-se</a>
                         </li>
                         {% endif %}
                     </ul>
