@@ -32,8 +32,6 @@ def listar_grupos():
     coordenadas = []
     for grupo in lista_de_grupos:
         coordenadas.append([grupo.name, grupo.latitude, grupo.longitude])
-        # print(coordenadas[0][0])
-    # print(coordenadas)
 
     localizacoes = folium.Map(location=[-23.2038503, -45.8697245], zoom_start=13, tiles="OpenStreetMap")
     for coordenada in coordenadas:
@@ -51,6 +49,7 @@ def grupo():
 
 
 @main.route('/criar_grupo', methods=['POST'])
+@login_required
 def criar_grupo():
 
     db.create_all()
@@ -75,8 +74,11 @@ def criar_grupo():
     # transforma o CEP em Dic. com o endereco dividido em cidade, bairro e etc.
     endereco = pycep_correios.get_address_from_cep(request.form.get('cep'))
 
+    # Retira a palavra'Rua' do logradouro porque estava provocando erro
+    logradouro = endereco['logradouro'].replace("Rua ", " ")
+
     #transforma o 'endereco' um dicionario com lat. e log.
-    localizacao = geolocator.geocode(f"{endereco['logradouro']} {endereco['cidade']} {endereco['uf']} Brasil ")
+    localizacao = geolocator.geocode(logradouro, language="Pt-br", country_codes="Br")
 
     latitude = localizacao.latitude
     longitude = localizacao.longitude
