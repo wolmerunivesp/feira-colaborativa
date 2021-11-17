@@ -21,7 +21,7 @@ def index():
 @main.route('/grupos')
 @login_required
 def grupos():
-    return render_template('grupos.html')
+    return render_template('grupos.html', grupos=Grupo.query.all())
 
 
 @main.route('/listar_grupos')
@@ -66,10 +66,29 @@ def criar_grupo():
     else:
         semanalmente = 0
         quinzenalmente = 1
-    verdura = request.form.get('verdura')
-    legume = request.form.get('legume')
-    fruta = request.form.get('fruta')
-    tempero = request.form.get('tempero')
+
+    if request.form.get('verdura') == '7':
+        verdura = 1
+    else:
+        verdura = 0
+
+    if request.form.get('legume') == '7':
+        legume = 1
+    else:
+        legume = 0
+
+    if request.form.get('tempero') == '7':
+        tempero = 1
+    else:
+        tempero = 0
+
+    if request.form.get('fruta') == '7':
+        fruta = 1
+    else:
+        fruta = 0
+
+
+    
 
     # transforma o CEP em Dic. com o endereco dividido em cidade, bairro e etc.
     endereco = pycep_correios.get_address_from_cep(request.form.get('cep'))
