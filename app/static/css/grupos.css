@@ -24,3 +24,12 @@
       height: 100%;
     }  
   }
+
+  @media (max-width: 974px)
+{
+  #cards-grupos
+   {
+    width: 97%;
+    padding-right: 30px;
+   }
+}

@@ -11,12 +11,12 @@
     <div class="col-sm-8 m-1 p-1" style="--aspect-ratio: 16/9;">
         <iframe class="embed-responsive-item" src="/listar_grupos"></iframe>
     </div>
-    <div class="col-lg-3 m-1">
+    <div id="cards-grupos" class="col-lg-3 m-1">
 
         {% for grupo in grupos %}
 
         <div class="card w-100 m-2">
-            <div class="card-body">
+            <div class="card-body w-75">
                 <h2 class="card-title">Grupo: {{grupo.name}}</h2>
                 <h4> Grupo destinado a compras
                     {% if grupo.semanalmente == True %}
