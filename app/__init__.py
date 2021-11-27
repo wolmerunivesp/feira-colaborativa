@@ -2,7 +2,7 @@ import os
 from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
 from flask_login import LoginManager
-from dotenv import load_dotenv
+from dotenv import load_dotenv, dotenv_values
 
 load_dotenv()
 
@@ -12,19 +12,8 @@ db = SQLAlchemy()
 def create_app():
     app = Flask(__name__)
 
-    app.config['SECRET_KEY'] = os.environ.get("SECRET_KEY", 'feira#br7-natu@za')
-    # app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get("DATABASE_URL", 'sqlite:///db.sqlite')
-
-    # Configuração para PRODUÇÃO no Heroku
-    db_driver = 'pymysql'
-    db_dialect = 'mysql'
-    db_user = 'b61ca611e9cd86'
-    db_pass ='b9274dfc'
-    db_host = 'us-cdbr-east-04.cleardb.com'
-    db_name = 'heroku_46cc2957a8f111a'
-
-    # Conexão com o BD
-    app.config['SQLALCHEMY_DATABASE_URI'] = "{db_dialect}+{db_driver}://{db_user}:{db_pass}@{db_host}/{db_name}".format(db_dialect=db_dialect, db_driver=db_driver, db_user = db_user, db_pass = db_pass, db_host = db_host, db_name = db_name)
+    app.config['SECRET_KEY'] = os.environ.get("SECRET_KEY", 'sqlite:///db.sqlite')
+    app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get("DATABASE_URL", 'feiracolaborativa')
     
     db.init_app(app)
 
