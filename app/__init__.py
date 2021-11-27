@@ -13,9 +13,8 @@ def create_app():
     app = Flask(__name__)
 
     app.config['SECRET_KEY'] = os.environ.get("SECRET_KEY", 'feira#br7-natu@za')
-    # app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get("DATABASE_URL", 'sqlite:///db.sqlite')
 
-    # Configuração para PRODUÇÃO no Heroku
+    # Configuração para PRODUÇÃO no Heroku, essas variáveis são utilizadas na "Conexão com o BD" logo abaixo.
     db_driver = 'pymysql'
     db_dialect = 'mysql'
     db_user = 'b61ca611e9cd86'
