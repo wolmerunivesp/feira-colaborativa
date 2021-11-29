@@ -21,6 +21,7 @@ def create_app():
     login_manager.login_view = 'auth.login'
     login_manager.init_app(app)
 
+    # esse import precisa estar aqui na linha 34 antes do @login_manager.user_loader e após o  login_manager.init_app(app)
     from app.models.models import User
 
     @login_manager.user_loader
