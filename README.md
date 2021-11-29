@@ -40,12 +40,11 @@ Ajudar a população a ter acesso de forma  mais econômica aos hortifrutigranje
 
 #### Orientador do PI
 
-* Erika Sato
+* Erika Tiemi Sato
 
 #### Colaboradores
 
 * Gabriel Pires Arnecke
-* Helder Melo de Oliveira
 * João Paulo Moreira da Costa
 * Nayton Sanches Barbosa
 * Paulo Vitor Amorim
